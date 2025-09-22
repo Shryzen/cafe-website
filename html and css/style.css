@@ -1,0 +1,313 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: url(img/1.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    overflow: hidden;
+}
+nav{
+    background: #d2c4c4;
+    height: 80px;
+    min-height: 50px;
+    padding: 0 2vw;
+    width: 100%;
+    position : fixed 
+}
+ .button-wrapper {
+      position: fixed;
+      display: inline-block;
+      overflow: hidden;
+      border: 2px solid #007BFF;
+      border-radius: 12px;
+      cursor: pointer;
+      right: 10px;
+    }
+
+    .button-wrapper .curtain {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #007BFF;
+      transition: transform 0.6s ease-in-out;
+      z-index: 0;
+    }
+
+    .curtain.left {
+      left: 0;
+      transform: translateX(-100%);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    .curtain.right {
+      right: 0;
+      transform: translateX(100%);
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    .button-wrapper:hover .curtain.left {
+      transform: translateX(0);
+    }
+
+    .button-wrapper:hover .curtain.right {
+      transform: translateX(0);
+    }
+
+    .button-wrapper .btn-text {
+      position: relative;
+      z-index: 1;
+      color: #007BFF;
+      font-weight: bold;
+      padding: 12px 30px;
+      background-color: transparent;
+      transition: color 0.4s;
+    }
+
+   
+
+.login{
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+}
+li{
+    display: inline;
+    list-style: none;
+}
+a{
+    padding: 2px 2px;
+    margin: 2px 2px;
+    color: none;
+
+}
+nav a{
+    
+    text-decoration: dashed;
+    font-weight: 700;
+    border-radius: 40px;
+    line-height: 1.7142857361;
+    font-size: 1rem;
+}
+
+nav a:hover{
+    transition-delay: 0.2s;
+    color: grey;
+}
+.login{
+    position: absolute;
+    text-decoration: none;
+    height: 30px;
+    width: 40px;
+    color: rgb(50, 8, 8);
+    right: 200px;
+}
+.sidebar {
+    height: 100%;
+    width: 0;
+    max-width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #222;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 1;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: #444;
+}
+
+/* Push main content when sidebar opens */
+.sidebar-open {
+    margin-left: 250px;
+}
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 2;
+    height: 40px;
+    width: 40px;
+    color: cornflowerblue;
+}
+/*logo*/
+
+.logo-img{
+    position: absolute;
+    height: 80px;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -10px;
+}
+.blur-bg-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+}
+.show-popup .blur-bg-overlay{
+    opacity: 1;
+    pointer-events: auto;
+}
+    
+
+.form-popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    max-width: 400px;
+    width: 90vw;
+    background: #f1e9e9;
+    border: 1px solid #444;
+    transform: translate(-50%, -100%);
+}
+.show-popup .form-popup{
+    opacity: 1;
+    pointer-events: auto;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s ease, opacity 0.1s;
+     
+}
+.form-popup .close-btn{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: rgb(69, 16, 16);
+    cursor: pointer;
+  
+}
+
+.form-popup .form-box{
+   display: flex;
+}
+
+.form-popup.show-signup .log{
+    display: none;
+}
+.form-popup .signup{
+    display: none;
+}
+.form-popup.show-signup .signup{
+    display: flex;
+}
+
+
+.form-box h2{
+text-align: center;
+margin-bottom: 30px;
+}
+.form-box .form-content {
+width: 100%;
+padding: 35px;
+min-height: 300px;
+}
+form .input-field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+form .input-field input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 3px;
+    font-size: 0.95rm;
+    border: 1px solid gray;
+    padding: 0px 5px;
+}
+.input-field input:focus{
+    color: #222;
+}
+.input-field input:is(:focus, :valid){
+    padding: 5px 5px 0;
+}
+form .input-field label{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left: 15px;
+    color: #717171;
+    pointer-events: none;
+    transition: 0.1s ease;
+}
+.input-field input:is(:focus, :valid)~label{
+ color: #222;
+ font-size: 0.75rem;
+ transform: translateY(-140%);
+}
+.form-box a{
+    color: #222;
+    text-decoration: none;
+}
+.form-box a:hover{
+    text-decoration: underline;
+}
+.form-box :where(.forgot-password, .policy-text){
+    display: inline-flex;
+    margin-top: 14px ;
+    font-size: 0.95rem;
+}
+form button{
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 0;
+    border-radius: 4px;
+    margin: 25px 0;
+    color: #f1e9e9 ;
+    background: #222;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+form button:hover{
+    background: #717171;
+}
+.form-box .bottom-link{
+   text-align:center;
+
+}
+
+
+.signup .policy-text{
+display: flex;
+align-items: center;
+}
+.signup .policy-text input{
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+
+
+img, .logo-img {
+    max-width: 100%;
+    height: auto;
+}
+#reservation-popup {
+    display: none;
+}

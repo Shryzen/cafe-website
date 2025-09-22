@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food menu</title>
+    <link rel="stylesheet" href="style.css">
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+<body>
+    
+    <nav>
+         <div class="navbar">
+        <a  class="reserve" href ="reservation.html"><Button>Reservation</Button></a>
+         <a href="loginpage.html"> <ion-icon name="person-circle-outline" class="login">
+         </ion-icon> </a>
+    </div>
+    <div class="menu-btn" onclick="toggleMenu()">
+        <ion-icon name="reorder-three" class="menu-btn"></ion-icon >
+    </div>   
+    <div class="sidebar" id="sidebar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+    </div>
+    <div class="logo">
+        <img src="Cà Phê Coffee Logo Design (1).png" alt="logo" class="logo-img">
+    </div>
+    </nav>
+     <script src="script.js"></script>
+</body>
+ <div class="form-box Signup">
+                <div class="form-details">
+                    <h2>Create Account</h2>
+                    <p>To be part of our community</p>
+                </div>
+                <div class="form-content">
+                    <h2>SIGNUP</h2>
+                    <form action="#">
+                        
+                        <div class="input-field">
+                            <input type="text" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" required>
+                            <label>Create Password</label>
+                        </div>
+                        <div class="policy-text">
+                            <input type="checkbox" id="policy">
+                            <label for="policy">
+                                I agree the
+                                <a href="#">Terms & Condition</a>
+                            </label>
+                            
+                        </div>
+                        
+                        <button type="submit">log In</button>
+                    </form>
+                    <div class="botton-link">
+                        Already have an account?
+                        <a href="#">login</a>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</html>

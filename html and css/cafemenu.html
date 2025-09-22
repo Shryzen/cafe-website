@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food menu</title>
+    <link rel="stylesheet" href="style.css">
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+<body>
+    
+    <nav>
+         <div class="navbar">
+      <div class="reserve"> 
+     <a id="reservation-btn" class="button-wrapper">
+     <div class="curtain left"></div>
+     <div class="curtain right"></div>
+     <span class="btn-text">Reservation</span>
+  </a>
+  </div>
+         <a> <ion-icon name="person-circle-outline" class="login">
+         </ion-icon> </a>
+    </div>
+    <div class="menu-btn" onclick="toggleMenu()">
+        <ion-icon name="reorder-three" class="menu-btn"></ion-icon >
+    </div>   
+    <div class="sidebar" id="sidebar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+    </div>
+    <div class="logo">
+        <img src="Cà Phê Coffee Logo Design (1).png" alt="logo" class="logo-img">
+    </div>
+    </nav>
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <ion-icon name="close-outline" class="close-btn"></ion-icon>
+        <div class="form-box log">
+            
+            <div class="form-content">
+                <h2>LOGIN</h2>
+                <form action="#">
+                    
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <button type="submit">log In</button>
+                </form>
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#" id="signup-link">Signup</a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="form-box signup">
+            
+            <div class="form-content">
+                <h2>SIGNUP</h2>
+                <form action="#">
+                    
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label> Create Password</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy">
+                        <label for="policy">
+                            I agree the
+                            <a href="#">terms and condition</a>
+                        </label>
+                        
+                    </div>
+                    
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="bottom-link">
+                    Already have an account?
+                    <a href="#" id="login-link">login</a>
+                </div>
+                
+            </div>
+        
+    </div>
+
+    
+    <script src="script.js"></script>
+    </body>
+    </html>

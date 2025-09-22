@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Menu</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Curtain button styles */
+    .button-wrapper {
+      position: relative;
+      display: inline-block;
+      padding: 12px 30px;
+      color: #2563eb;
+      border: 2px solid #2563eb;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .button-wrapper .curtain {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #2563eb;
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+      z-index: 0;
+    }
+
+    .button-wrapper .curtain.right {
+      right: 0;
+      left: auto;
+      transform: translateX(100%);
+    }
+
+    .button-wrapper:hover .curtain.left {
+      transform: translateX(0);
+    }
+
+    .button-wrapper:hover .curtain.right {
+      transform: translateX(0);
+    }
+
+    .button-wrapper .btn-text {
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .button-wrapper:hover .btn-text {
+      color: white;
+    }
+
+    /* Reservation popup styles */
+    .form-popup {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .show-popup {
+      display: block;
+    }
+
+    .blur-bg-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px);
+      z-index: 40;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .blur-bg-overlay.active {
+      display: block;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .input-field {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .input-field label {
+      position: absolute;
+      top: -12px;
+      left: 10px;
+      background: white;
+      padding: 0 5px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    button[type="submit"] {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- NAVIGATION -->
+  <nav class="p-4 flex items-center justify-between bg-white shadow-md">
+    <!-- Your curtain-style button triggering popup -->
+    <a onclick="openReservationPopup()" class="button-wrapper">
+      <div class="curtain left"></div>
+      <div class="curtain right"></div>
+      <span class="btn-text">Reservation</span>
+    </a>
+
+    <!-- Login icon -->
+    <a href="#">
+      <ion-icon name="person-circle-outline" class="text-4xl text-blue-600"></ion-icon>
+    </a>
+  </nav>
+
+  <!-- OVERLAY -->
+  <div class="blur-bg-overlay" id="blur-bg"></div>
+
+  <!-- RESERVATION POPUP -->
+  <div class="form-popup" id="reservation-popup">
+    <ion-icon name="close-outline" class="close-btn" onclick="closeReservationPopup()"></ion-icon>
+    <div class="form-box">
+      <div class="form-content">
+        <h2 class="text-xl font-bold mb-4 text-center">Make a Reservation</h2>
+        <form id="reservation-form">
+          <div class="input-field">
+            <input type="text" id="res-name" required>
+            <label>Name</label>
+          </div>
+          <div class="input-field">
+            <input type="tel" id="res-phone" required>
+            <label>Phone Number</label>
+          </div>
+          <div class="input-field">
+            <input type="number" id="res-people" required min="1">
+            <label>Number of People</label>
+          </div>
+          <div class="input-field">
+            <input type="date" id="res-date" required>
+            <label>Date</label>
+          </div>
+          <div class="input-field">
+            <input type="time" id="res-time" required>
+            <label>Time</label>
+          </div>
+          <button type="submit">Save Reservation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- IONICONS -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- SCRIPT -->
+  <script>
+    function openReservationPopup() {
+      document.getElementById("reservation-popup").classList.add("show-popup");
+      document.getElementById("blur-bg").classList.add("active");
+    }
+
+    function closeReservationPopup() {
+      document.getElementById("reservation-popup").classList.remove("show-popup");
+      document.getElementById("blur-bg").classList.remove("active");
+    }
+
+    document.getElementById("reservation-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("res-name").value;
+      const phone = document.getElementById("res-phone").value;
+      const people = document.getElementById("res-people").value;
+      const date = document.getElementById("res-date").value;
+      const time = document.getElementById("res-time").value;
+
+      console.log("Reservation saved:", { name, phone, people, date, time });
+
+      this.reset();
+      closeReservationPopup();
+    });
+  </script>
+</body>
+</html>

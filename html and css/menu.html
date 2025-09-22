@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide-Out Menu</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <!-- Three-dot menu button -->
+    <div class="menu-btn" onclick="toggleMenu()">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- Slide-out sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Main content (pushes when sidebar opens) -->
+    <main id="main-content">
+        <h1>Your Content Here</h1>
+        <p>Click the 3 dots to open the menu.</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
